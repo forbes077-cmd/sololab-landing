@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sololab.ai | Results-as-a-Service for Founders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Futuristic Tech (Very Dark Grey, Light Grey, Electric Blue) -->
+    <!-- Application Structure Plan: A single-page landing application with a linear flow: Hero (Value Prop) -> Four Wheels (Holistic Approach) -> Founder Priorities (Data Collection) -> Free Assessment (Conversion CTA) -> Our Process (Credibility) -> Contact Form (Direct Communication). This structure guides the founder from a high-level promise to a specific, low-risk action, and then provides a direct channel for communication, maximizing conversion potential. -->
+    <!-- Visualization & Content Choices: Hero: Goal=Inform, Method=Large Typography, Interaction=CTA buttons. Four Wheels: Goal=Organize, Method=Icon+Text cards in a responsive grid (HTML/Tailwind). Founder Priorities: Goal=Collect Data, Method=Interactive Form with checkboxes (HTML/JS). Assessment Form: Goal=Convert, Method=Interactive Form, Interaction=Live word count (JS), button states. Our Process: Goal=Build Trust, Method=Text blocks and lists to explain methodology. Contact Form: Goal=Direct Communication, Method=Standard form inputs (HTML/JS). This avoids complex visualizations, focusing on clarity and UX to build trust. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0F0F1A;
+            color: #F8F9FA;
+        }
+        .accent-color { color: #00FFFF; }
+        .bg-accent { background-color: #00FFFF; }
+        .border-accent { border-color: #00FFFF; }
+        .ring-accent:focus { ring: 2px solid #00FFFF; }
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background-color: #00FFFF;
+            color: #1A1A2E;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 255, 255, 0.3);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: #F8F9FA;
+            border: 2px solid #F8F9FA;
+        }
+        .btn-secondary:hover {
+            background-color: #F8F9FA;
+            color: #1A1A2E;
+        }
+        .section-title {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            font-weight: 700;
+        }
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 3rem;
+                line-height: 1;
+            }
+        }
+        .glassmorphism-card {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .down-arrow {
+            font-size: 2rem;
+            color: #00FFFF;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-[#0D0D19]/80 backdrop-blur-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                    <a href="#hero" class="text-2xl font-bold">sololab.ai</a>
+                </div>
+                <nav class="hidden md:flex md:space-x-8">
+                    <a href="#four-wheels" class="font-semibold text-gray-200 hover:text-cyan-400 transition-colors">How it works</a>
+                    <a href="#assessment" class="font-semibold text-gray-200 hover:text-cyan-400 transition-colors">Free Assessment</a>
+                    <a href="#contact-form" class="font-semibold text-gray-200 hover:text-cyan-400 transition-colors">Contact</a>
+                </nav>
+                <div class="hidden md:block">
+                    <a href="#assessment" class="btn btn-primary">Get free AI assessment</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="p-2 rounded-md hover:bg-gray-700">
+                        <svg class="w-6 h-6 text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#four-wheels" class="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:bg-gray-700">How it works</a>
+                <a href="#assessment" class="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:bg-gray-700">Free Assessment</a>
+                <a href="#contact-form" class="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:bg-gray-700">Contact</a>
+                <a href="#assessment" class="block px-3 py-2 mt-2 rounded-md text-base font-medium bg-cyan-400 text-black hover:bg-cyan-500">Get free AI assessment</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="pt-32 pb-20 md:pt-48 md:pb-28 text-center relative">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="text-lg text-gray-400 mb-4">We offer results-as-a-service, not just software.</p>
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-white mb-2">
+                    sololab is a turn-key partner for founders
+                </h1>
+                <p class="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight text-gray-300">
+                    from testing ideas to your first <span class="accent-color">100 paying customers.</span>
+                </p>
+                <p class="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-gray-400">
+                    We deliver outcomes, not tools.<br>With AI solutions, we do the work and sell you the result.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="#assessment" class="btn btn-primary w-full sm:w-auto">Get free AI assessment</a>
+                    <a href="#four-wheels" class="btn btn-secondary w-full sm:w-auto">How it works</a>
+                </div>
+            </div>
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2">
+                <a href="#four-wheels" class="down-arrow">&#8595;</a>
+            </div>
+        </section>
+
+        <section id="four-wheels" class="py-20 bg-[#0D0D19] relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="section-title text-white">Drive your startup through the “valley of death”</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-400">
+                        Success doesn’t come from fixing one issue in isolation.<br>It comes from keeping all four wheels turning together:
+                    </p>
+                </div>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="p-8 rounded-xl shadow-lg bg-[#1A1A2E] text-center text-gray-200">
+                        <div class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
+                        <h3 class="text-xl font-bold">Go-to-Market &amp; Customer Growth</h3>
+                    </div>
+                    <div class="p-8 rounded-xl shadow-lg bg-[#1A1A2E] text-center text-gray-200">
+                        <div class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
+                        <h3 class="text-xl font-bold">Investor Relations &amp; Financial Management</h3>
+                    </div>
+                    <div class="p-8 rounded-xl shadow-lg bg-[#1A1A2E] text-center text-gray-200">
+                        <div class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
+                        <h3 class="text-xl font-bold">Operations &amp; Founder Productivity</h3>
+                    </div>
+                    <div class="p-8 rounded-xl shadow-lg bg-[#1A1A2E] text-center text-gray-200">
+                        <div class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-2xl font-bold mx-auto mb-4">4</div>
+                        <h3 class="text-xl font-bold">Founder Well-being &amp; Support</h3>
+                    </div>
+                </div>
+                <div id="priority-form-container" class="mt-16 max-w-lg mx-auto p-8 rounded-2xl glassmorphism-card">
+                    <h3 class="text-2xl font-bold mb-6 text-center">What's your priority?</h3>
+                    <p class="text-gray-400 text-center mb-6">Select the areas where you need to get things right first:</p>
+                    <form id="priority-form" class="space-y-4">
+                        <div>
+                            <label class="flex items-center space-x-3">
+                                <input type="checkbox" name="priority" value="go-to-market" class="h-5 w-5 text-cyan-500 bg-gray-900 rounded border-gray-600 focus:ring-cyan-500">
+                                <span class="text-gray-200">Go-to-Market & Customer Growth</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="flex items-center space-x-3">
+                                <input type="checkbox" name="priority" value="investor-relations" class="h-5 w-5 text-cyan-500 bg-gray-900 rounded border-gray-600 focus:ring-cyan-500">
+                                <span class="text-gray-200">Investor Relations & Financial Management</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="flex items-center space-x-3">
+                                <input type="checkbox" name="priority" value="operations" class="h-5 w-5 text-cyan-500 bg-gray-900 rounded border-gray-600 focus:ring-cyan-500">
+                                <span class="text-gray-200">Operations & Founder Productivity</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="flex items-center space-x-3">
+                                <input type="checkbox" name="priority" value="founder-well-being" class="h-5 w-5 text-cyan-500 bg-gray-900 rounded border-gray-600 focus:ring-cyan-500">
+                                <span class="text-gray-200">Founder Well-being & Support</span>
+                            </label>
+                        </div>
+                        <button type="submit" class="w-full btn btn-primary mt-6">Submit</button>
+                    </form>
+                    <div id="priority-success" class="hidden text-center mt-4 bg-green-900 border border-green-700 text-green-300 px-4 py-3 rounded-lg" role="alert">
+                        Thanks for your feedback!
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2">
+                <a href="#assessment" class="down-arrow">&#8595;</a>
+            </div>
+        </section>
+        
+        <section id="assessment" class="py-20 bg-[#0D0D19] relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="section-title text-white">Start with a free AI assessment of your project or idea</h2>
+                    <p class="mt-4 text-lg text-gray-400">
+                        AI personas will debate your idea, refining offers to find the right path to pivots or repositioning (if necessary) before sending you a concise evaluation:<br>risks, opportunities, and next steps — delivered straight to your inbox.
+                    </p>
+                </div>
+
+                <div class="mt-12 max-w-lg mx-auto">
+                    <div id="assessment-form-container" class="bg-[#1A1A2E] p-8 rounded-2xl shadow-xl">
+                        <form id="assessment-form" class="space-y-6">
+                            <div>
+                                <label for="email" class="sr-only">Email</label>
+                                <input type="email" name="email" id="email" required class="block w-full px-4 py-3 rounded-lg border-gray-600 bg-gray-900 text-white shadow-sm focus:border-cyan-500 focus:ring-cyan-500" placeholder="Enter your email">
+                            </div>
+                            <div>
+                                <label for="idea" class="sr-only">Idea description</label>
+                                <textarea name="idea" id="idea" rows="3" required class="block w-full px-4 py-3 rounded-lg border-gray-600 bg-gray-900 text-white shadow-sm focus:border-cyan-500 focus:ring-cyan-500" placeholder="Describe your idea..."></textarea>
+                                <div class="flex justify-between items-center mt-2 text-sm">
+                                    <p class="text-gray-400">Hint: Pain → Solution → Target audience</p>
+                                    <p id="word-counter" class="text-gray-400">0 / 25 words</p>
+                                </div>
+                            </div>
+                            <button type="submit" id="submit-button" class="w-full btn btn-primary text-lg">Submit for assessment</button>
+                        </form>
+                    </div>
+                     <div id="success-message" class="hidden text-center bg-green-900 border border-green-700 text-green-300 px-4 py-6 rounded-2xl shadow-xl" role="alert">
+                        <h4 class="font-bold text-2xl">Thank You!</h4>
+                        <p class="mt-2 text-lg">Your idea has been submitted. Our AI personas are on it! Please check your inbox for the evaluation shortly.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2">
+                <a href="#our-process" class="down-arrow">&#8595;</a>
+            </div>
+        </section>
+
+        <section id="our-process" class="py-20 bg-[#0D0D19] relative">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="section-title text-white">Our Process</h2>
+                <p class="mt-4 text-lg text-gray-400">
+                    Sololab researches real user "pain points" and turns them into actionable signals.
+                </p>
+                <p class="mt-4 text-lg text-gray-400">
+                    We track what people are writing online, right now:
+                </p>
+                <p class="mt-4 text-gray-400 text-xl italic">
+                    "I'm looking for a tool for X." "Annoyed by a bug in Y." "How do I solve Z?"
+                </p>
+                <div class="mt-12 text-center">
+                    <h3 class="text-2xl font-bold mb-4 text-white">Sources</h3>
+                    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                        <div class="p-6 rounded-lg glassmorphism-card">
+                            <p class="text-xl font-bold">Community Forums</p>
+                            <p class="mt-2 text-gray-400">Indie Hackers, Hacker News, relevant subreddits.</p>
+                        </div>
+                        <div class="p-6 rounded-lg glassmorphism-card">
+                            <p class="text-xl font-bold">Competitor Insights</p>
+                            <p class="mt-2 text-gray-400">Reviews and comments on competitor products (Apollo, Lemlist, etc).</p>
+                        </div>
+                        <div class="p-6 rounded-lg glassmorphism-card">
+                            <p class="text-xl font-bold">Profiled Subreddits</p>
+                            <p class="mt-2 text-gray-400">r/startups, r/Entrepreneur, r/IndieHackers.</p>
+                        </div>
+                        <div class="p-6 rounded-lg glassmorphism-card">
+                            <p class="text-xl font-bold">Open Chats & Forums</p>
+                            <p class="mt-2 text-gray-400">Specialized forums and open chats.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2">
+                <a href="#contact-form" class="down-arrow">&#8595;</a>
+            </div>
+        </section>
+
+        <section id="contact-form" class="py-20 bg-[#0D0D19] relative">
+            <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="section-title text-white">Get in touch</h2>
+                    <p class="mt-4 text-lg text-gray-400">
+                        Have a question or want to discuss a custom solution?
+                        <br>
+                        Send us a message and we'll get back to you shortly.
+                    </p>
+                </div>
+                <div class="mt-12 max-w-lg mx-auto">
+                    <div id="contact-form-container" class="bg-[#1A1A2E] p-8 rounded-2xl shadow-xl">
+                        <form id="contact-form-submit" class="space-y-6">
+                            <div>
+                                <label for="contact-name" class="sr-only">Name</label>
+                                <input type="text" name="name" id="contact-name" required class="block w-full px-4 py-3 rounded-lg border-gray-600 bg-gray-900 text-white shadow-sm focus:border-cyan-500 focus:ring-cyan-500" placeholder="Your Name">
+                            </div>
+                            <div>
+                                <label for="contact-email" class="sr-only">Email</label>
+                                <input type="email" name="email" id="contact-email" required class="block w-full px-4 py-3 rounded-lg border-gray-600 bg-gray-900 text-white shadow-sm focus:border-cyan-500 focus:ring-cyan-500" placeholder="Your Email">
+                            </div>
+                            <div>
+                                <label for="contact-message" class="sr-only">Message</label>
+                                <textarea name="message" id="contact-message" rows="5" required class="block w-full px-4 py-3 rounded-lg border-gray-600 bg-gray-900 text-white shadow-sm focus:border-cyan-500 focus:ring-cyan-500" placeholder="Your Message"></textarea>
+                            </div>
+                            <button type="submit" id="contact-submit-button" class="w-full btn btn-primary text-lg">Send Message</button>
+                        </form>
+                    </div>
+                    <div id="contact-success-message" class="hidden text-center mt-4 bg-green-900 border border-green-700 text-green-300 px-4 py-6 rounded-2xl shadow-xl" role="alert">
+                        <h4 class="font-bold text-2xl">Message Sent!</h4>
+                        <p class="mt-2 text-lg">Thanks for reaching out! We'll get back to you as soon as possible.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#1A1A2E] text-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <p class="text-lg font-bold">Sololab.ai</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white">Terms of Service</a>
+                </div>
+                <p class="mt-8 md:mt-0 text-gray-500">&copy; 2025 Sololab. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ideaTextarea = document.getElementById('idea');
+            const wordCounter = document.getElementById('word-counter');
+            const maxWords = 25;
+
+            ideaTextarea.addEventListener('input', () => {
+                const text = ideaTextarea.value.trim();
+                const words = text === '' ? 0 : text.split(/\s+/).length;
+                
+                wordCounter.textContent = `${words} / ${maxWords} words`;
+
+                if (words > maxWords) {
+                    wordCounter.classList.add('text-red-400');
+                    wordCounter.classList.remove('text-gray-400');
+                } else {
+                    wordCounter.classList.remove('text-red-400');
+                    wordCounter.classList.add('text-gray-400');
+                }
+            });
+
+            const assessmentForm = document.getElementById('assessment-form');
+            const formContainer = document.getElementById('assessment-form-container');
+            const successMessage = document.getElementById('success-message');
+            
+            assessmentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const text = ideaTextarea.value.trim();
+                const words = text === '' ? 0 : text.split(/\s+/).length;
+
+                if (words > maxWords) {
+                    return;
+                }
+
+                if (assessmentForm.checkValidity()) {
+                    formContainer.classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                }
+            });
+
+            const priorityForm = document.getElementById('priority-form');
+            const prioritySuccess = document.getElementById('priority-success');
+            const priorityLabels = {
+                'go-to-market': 'Go-to-Market & Customer Growth',
+                'investor-relations': 'Investor Relations & Financial Management',
+                'operations': 'Operations & Founder Productivity',
+                'founder-well-being': 'Founder Well-being & Support'
+            };
+
+            const contactForm = document.getElementById('contact-form-submit');
+            const contactFormContainer = document.getElementById('contact-form-container');
+            const contactSuccessMessage = document.getElementById('contact-success-message');
+
+            const allPriorities = ['go-to-market', 'investor-relations', 'operations', 'founder-well-being'];
+            let cumulativePriorities = {
+                'go-to-market': 12,
+                'investor-relations': 8,
+                'operations': 15,
+                'founder-well-being': 5
+            };
+            let totalSubmissions = 40;
+
+            const updatePriorityStats = (selectedPriorities) => {
+                const newStats = { ...cumulativePriorities };
+                selectedPriorities.forEach(p => {
+                    newStats[p] = (newStats[p] || 0) + 1;
+                });
+                const newTotal = totalSubmissions + 1;
+                const percentages = {};
+                for (const key in newStats) {
+                    percentages[priorityLabels[key]] = ((newStats[key] / newTotal) * 100).toFixed(1) + '%';
+                }
+                return { percentages, newStats, newTotal };
+            };
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (contactForm.checkValidity()) {
+                    const name = document.getElementById('contact-name').value;
+                    const email = document.getElementById('contact-email').value;
+                    const message = document.getElementById('contact-message').value;
+                    
+                    const selectedPriorities = Array.from(priorityForm.elements['priority'])
+                        .filter(checkbox => checkbox.checked)
+                        .map(checkbox => checkbox.value);
+
+                    const { percentages, newStats, newTotal } = updatePriorityStats(selectedPriorities);
+                    cumulativePriorities = newStats;
+                    totalSubmissions = newTotal;
+
+                    const summaryOfMessage = message.split('. ')[0] + '.';
+
+                    const emailReport = {
+                        title: 'Sololab.ai Contact Form Submission & Priority Analytics',
+                        stats: percentages,
+                        submissions: [
+                            { email: 'john.doe@example.com', name: 'John Doe', problem: 'Startup scaling challenges', summary: 'Seeking advice on scaling user acquisition.' },
+                            { email: 'jane.smith@example.com', name: 'Jane Smith', problem: 'Finding investors', summary: 'Looking for strategies to approach angel investors.' },
+                            { email: email, name: name, problem: 'Priority: ' + selectedPriorities.map(p => priorityLabels[p]).join(', '), summary: summaryOfMessage }
+                        ]
+                    };
+                    
+                    contactFormContainer.classList.add('hidden');
+                    contactSuccessMessage.classList.remove('hidden');
+                    console.log('--- EMAIL REPORT ---');
+                    console.log(JSON.stringify(emailReport, null, 2));
+                    console.log('---------------------');
+                }
+            });
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('shadow-md');
+                } else {
+                    header.classList.remove('shadow-md');
+                }
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    if (mobileMenu.classList.contains('hidden') === false) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

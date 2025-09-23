@@ -24,6 +24,32 @@
         .ring-accent:focus { ring: 2px solid #00FFFF; }
         .btn {
             display: inline-block;
+            padding: 0.75rem 1.5rem;<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sololab.ai | Results-as-a-Service for Founders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Futuristic Tech (Very Dark Grey, Light Grey, Electric Blue) -->
+    <!-- Application Structure Plan: A single-page landing application with a linear flow: Hero (Value Prop) -> Four Wheels (Holistic Approach) -> Founder Priorities (Data Collection) -> Free Assessment (Conversion CTA) -> Our Process (Credibility) -> Contact Form (Direct Communication). This structure guides the founder from a high-level promise to a specific, low-risk action, and then provides a direct channel for communication, maximizing conversion potential. -->
+    <!-- Visualization & Content Choices: Hero: Goal=Inform, Method=Large Typography, Interaction=CTA buttons. Four Wheels: Goal=Organize, Method=Icon+Text cards in a responsive grid (HTML/Tailwind). Founder Priorities: Goal=Collect Data, Method=Interactive Form with checkboxes (HTML/JS). Assessment Form: Goal=Convert, Method=Interactive Form, Interaction=Live word count (JS), button states. Our Process: Goal=Build Trust, Method=Text blocks and lists to explain methodology. Contact Form: Goal=Direct Communication, Method=Standard form inputs (HTML/JS). This avoids complex visualizations, focusing on clarity and UX to build trust. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0F0F1A;
+            color: #F8F9FA;
+        }
+        .accent-color { color: #00FFFF; }
+        .bg-accent { background-color: #00FFFF; }
+        .border-accent { border-color: #00FFFF; }
+        .ring-accent:focus { ring: 2px solid #00FFFF; }
+        .btn {
+            display: inline-block;
             padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
             font-weight: 600;
@@ -79,6 +105,35 @@
             60% {
                 transform: translateY(-5px);
             }
+        }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: #1A1A2E;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 255, 255, 0.2);
+            max-width: 90%;
+            width: 400px;
+        }
+        .modal-button {
+            margin-top: 1rem;
+            padding: 0.5rem 2rem;
+            background-color: #00FFFF;
+            color: #1A1A2E;
+            font-weight: bold;
+            border-radius: 0.5rem;
         }
     </style>
 </head>
@@ -330,6 +385,14 @@
             </div>
         </div>
     </footer>
+    
+    <div id="modal-container" class="modal hidden">
+        <div class="modal-content">
+            <h4 id="modal-title" class="text-2xl font-bold mb-4"></h4>
+            <p id="modal-body" class="text-lg"></p>
+            <button id="modal-close" class="modal-button">OK</button>
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -351,7 +414,23 @@
                     wordCounter.classList.add('text-gray-400');
                 }
             });
+            
+            // Modal functionality
+            const modalContainer = document.getElementById('modal-container');
+            const modalTitle = document.getElementById('modal-title');
+            const modalBody = document.getElementById('modal-body');
+            const modalCloseButton = document.getElementById('modal-close');
 
+            function showModal(title, message) {
+                modalTitle.textContent = title;
+                modalBody.textContent = message;
+                modalContainer.classList.remove('hidden');
+            }
+
+            modalCloseButton.addEventListener('click', () => {
+                modalContainer.classList.add('hidden');
+            });
+            
             const assessmentForm = document.getElementById('assessment-form');
             const formContainer = document.getElementById('assessment-form-container');
             const successMessage = document.getElementById('success-message');
@@ -362,6 +441,7 @@
                 const words = text === '' ? 0 : text.split(/\s+/).length;
 
                 if (words > maxWords) {
+                    showModal('Ошибка', 'Описание идеи не должно превышать 25 слов.');
                     return;
                 }
 
@@ -381,10 +461,10 @@
                             formContainer.classList.add('hidden');
                             successMessage.classList.remove('hidden');
                         } else {
-                            alert('Oops! There was a problem submitting your form.');
+                            showModal('Ошибка', 'Упс! Возникла проблема при отправке формы.');
                         }
                     } catch (error) {
-                        alert('Oops! There was a network problem.');
+                        showModal('Ошибка', 'Упс! Проблема с сетью.');
                     }
                 }
             });
@@ -425,10 +505,10 @@
                             contactFormContainer.classList.add('hidden');
                             contactSuccessMessage.classList.remove('hidden');
                         } else {
-                            alert('Oops! There was a problem submitting your form.');
+                            showModal('Ошибка', 'Упс! Возникла проблема при отправке формы.');
                         }
                     } catch (error) {
-                        alert('Oops! There was a network problem.');
+                        showModal('Ошибка', 'Упс! Проблема с сетью.');
                     }
                 }
             });

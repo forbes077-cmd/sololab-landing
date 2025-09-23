@@ -356,7 +356,7 @@
             const formContainer = document.getElementById('assessment-form-container');
             const successMessage = document.getElementById('success-message');
             
-            assessmentForm.addEventListener('submit', function(e) {
+            assessmentForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 const text = ideaTextarea.value.trim();
                 const words = text === '' ? 0 : text.split(/\s+/).length;
@@ -366,8 +366,26 @@
                 }
 
                 if (assessmentForm.checkValidity()) {
-                    formContainer.classList.add('hidden');
-                    successMessage.classList.remove('hidden');
+                    const formData = new FormData(assessmentForm);
+                    formData.append('form-type', 'assessment');
+                    const formURL = 'https://formspree.io/f/xanpyelr'; // REPLACE WITH YOUR FORMSPREE ID
+                    try {
+                        const response = await fetch(formURL, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+                        if (response.ok) {
+                            formContainer.classList.add('hidden');
+                            successMessage.classList.remove('hidden');
+                        } else {
+                            alert('Oops! There was a problem submitting your form.');
+                        }
+                    } catch (error) {
+                        alert('Oops! There was a network problem.');
+                    }
                 }
             });
 
@@ -383,61 +401,35 @@
             const contactForm = document.getElementById('contact-form-submit');
             const contactFormContainer = document.getElementById('contact-form-container');
             const contactSuccessMessage = document.getElementById('contact-success-message');
-
-            const allPriorities = ['go-to-market', 'investor-relations', 'operations', 'founder-well-being'];
-            let cumulativePriorities = {
-                'go-to-market': 12,
-                'investor-relations': 8,
-                'operations': 15,
-                'founder-well-being': 5
-            };
-            let totalSubmissions = 40;
-
-            const updatePriorityStats = (selectedPriorities) => {
-                const newStats = { ...cumulativePriorities };
-                selectedPriorities.forEach(p => {
-                    newStats[p] = (newStats[p] || 0) + 1;
-                });
-                const newTotal = totalSubmissions + 1;
-                const percentages = {};
-                for (const key in newStats) {
-                    percentages[priorityLabels[key]] = ((newStats[key] / newTotal) * 100).toFixed(1) + '%';
-                }
-                return { percentages, newStats, newTotal };
-            };
             
-            contactForm.addEventListener('submit', function(e) {
+            contactForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 if (contactForm.checkValidity()) {
-                    const name = document.getElementById('contact-name').value;
-                    const email = document.getElementById('contact-email').value;
-                    const message = document.getElementById('contact-message').value;
-                    
-                    const selectedPriorities = Array.from(priorityForm.elements['priority'])
+                    const formData = new FormData(contactForm);
+                    formData.append('form-type', 'contact');
+                    const priorityData = Array.from(priorityForm.elements['priority'])
                         .filter(checkbox => checkbox.checked)
-                        .map(checkbox => checkbox.value);
-
-                    const { percentages, newStats, newTotal } = updatePriorityStats(selectedPriorities);
-                    cumulativePriorities = newStats;
-                    totalSubmissions = newTotal;
-
-                    const summaryOfMessage = message.split('. ')[0] + '.';
-
-                    const emailReport = {
-                        title: 'Sololab.ai Contact Form Submission & Priority Analytics',
-                        stats: percentages,
-                        submissions: [
-                            { email: 'john.doe@example.com', name: 'John Doe', problem: 'Startup scaling challenges', summary: 'Seeking advice on scaling user acquisition.' },
-                            { email: 'jane.smith@example.com', name: 'Jane Smith', problem: 'Finding investors', summary: 'Looking for strategies to approach angel investors.' },
-                            { email: email, name: name, problem: 'Priority: ' + selectedPriorities.map(p => priorityLabels[p]).join(', '), summary: summaryOfMessage }
-                        ]
-                    };
+                        .map(checkbox => priorityLabels[checkbox.value]);
+                    formData.append('priority', priorityData.join(', '));
                     
-                    contactFormContainer.classList.add('hidden');
-                    contactSuccessMessage.classList.remove('hidden');
-                    console.log('--- EMAIL REPORT ---');
-                    console.log(JSON.stringify(emailReport, null, 2));
-                    console.log('---------------------');
+                    const formURL = 'https://formspree.io/f/xanpyelr'; // REPLACE WITH YOUR FORMSPREE ID
+                    try {
+                        const response = await fetch(formURL, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+                        if (response.ok) {
+                            contactFormContainer.classList.add('hidden');
+                            contactSuccessMessage.classList.remove('hidden');
+                        } else {
+                            alert('Oops! There was a problem submitting your form.');
+                        }
+                    } catch (error) {
+                        alert('Oops! There was a network problem.');
+                    }
                 }
             });
 

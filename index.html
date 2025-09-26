@@ -23,8 +23,7 @@
         .border-accent { border-color: #00FFFF; }
         .ring-accent:focus { ring: 2px solid #00FFFF; }
         .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;<!DOCTYPE html>
+            displ<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -35,8 +34,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Futuristic Tech (Very Dark Grey, Light Grey, Electric Blue) -->
-    <!-- Application Structure Plan: A single-page landing application with a linear flow: Hero (Value Prop) -> Four Wheels (Holistic Approach) -> Founder Priorities (Data Collection) -> Free Assessment (Conversion CTA) -> Our Process (Credibility) -> Contact Form (Direct Communication). This structure guides the founder from a high-level promise to a specific, low-risk action, and then provides a direct channel for communication, maximizing conversion potential. -->
-    <!-- Visualization & Content Choices: Hero: Goal=Inform, Method=Large Typography, Interaction=CTA buttons. Four Wheels: Goal=Organize, Method=Icon+Text cards in a responsive grid (HTML/Tailwind). Founder Priorities: Goal=Collect Data, Method=Interactive Form with checkboxes (HTML/JS). Assessment Form: Goal=Convert, Method=Interactive Form, Interaction=Live word count (JS), button states. Our Process: Goal=Build Trust, Method=Text blocks and lists to explain methodology. Contact Form: Goal=Direct Communication, Method=Standard form inputs (HTML/JS). This avoids complex visualizations, focusing on clarity and UX to build trust. -->
+    <!-- Application Structure Plan: A single-page landing application with a linear flow: Hero (Value Prop) -> Free Assessment (Conversion CTA) -> Our Process (Credibility) -> Contact Form (Direct Communication). This simplified structure guides the founder immediately to the high-value action (AI assessment) and then provides supporting trust signals (Our Process) and a final contact channel, maximizing conversion potential by reducing friction. -->
+    <!-- Visualization & Content Choices: Hero: Goal=Inform, Method=Large Typography, Interaction=CTA buttons. Assessment Form: Goal=Convert, Method=Interactive Form, Interaction=Live word count (JS), button states. Our Process: Goal=Build Trust, Method=Text blocks and lists to explain methodology. Contact Form: Goal=Direct Communication, Method=Standard form inputs (HTML/JS). This avoids complex visualizations, focusing on clarity and UX to build trust. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
@@ -146,7 +145,7 @@
                     <a href="#hero" class="text-2xl font-bold">sololab.ai</a>
                 </div>
                 <nav class="hidden md:flex md:space-x-8">
-                    <a href="#four-wheels" class="font-semibold text-gray-200 hover:text-cyan-400 transition-colors">How it works</a>
+                    <a href="#assessment" class="font-semibold text-gray-200 hover:text-cyan-400 transition-colors">How it works</a>
                     <a href="#assessment" class="font-semibold text-gray-200 hover:text-cyan-400 transition-colors">Free Assessment</a>
                     <a href="#contact-form" class="font-semibold text-gray-200 hover:text-cyan-400 transition-colors">Contact</a>
                 </nav>
@@ -162,7 +161,7 @@
         </div>
         <div id="mobile-menu" class="hidden md:hidden">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#four-wheels" class="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:bg-gray-700">How it works</a>
+                <a href="#assessment" class="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:bg-gray-700">How it works</a>
                 <a href="#assessment" class="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:bg-gray-700">Free Assessment</a>
                 <a href="#contact-form" class="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:bg-gray-700">Contact</a>
                 <a href="#assessment" class="block px-3 py-2 mt-2 rounded-md text-base font-medium bg-cyan-400 text-black hover:bg-cyan-500">Get free AI assessment</a>
@@ -175,96 +174,30 @@
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <p class="text-lg text-gray-400 mb-4">We offer results-as-a-service, not just software.</p>
                 <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-white mb-2">
-                    sololab is a turn-key partner for founders
+                    Accelerate early-stage startups to <span class="accent-color">AI-native business.</span>
                 </h1>
                 <p class="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight text-gray-300">
-                    from testing ideas to your first <span class="accent-color">100 paying customers.</span>
+                    
                 </p>
                 <p class="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-gray-400">
                     We deliver outcomes, not tools.<br>With AI solutions, we do the work and sell you the result.
                 </p>
                 <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
                     <a href="#assessment" class="btn btn-primary w-full sm:w-auto">Get free AI assessment</a>
-                    <a href="#four-wheels" class="btn btn-secondary w-full sm:w-auto">How it works</a>
-                </div>
-            </div>
-            <div class="absolute bottom-8 left-1/2 -translate-x-1/2">
-                <a href="#four-wheels" class="down-arrow">&#8595;</a>
-            </div>
-        </section>
-
-        <section id="four-wheels" class="py-20 bg-[#0D0D19] relative">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center">
-                    <h2 class="section-title text-white">Drive your startup through the “valley of death”</h2>
-                    <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-400">
-                        Success doesn’t come from fixing one issue in isolation.<br>It comes from keeping all four wheels turning together:
-                    </p>
-                </div>
-                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="p-8 rounded-xl shadow-lg bg-[#1A1A2E] text-center text-gray-200">
-                        <div class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
-                        <h3 class="text-xl font-bold">Go-to-Market &amp; Customer Growth</h3>
-                    </div>
-                    <div class="p-8 rounded-xl shadow-lg bg-[#1A1A2E] text-center text-gray-200">
-                        <div class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
-                        <h3 class="text-xl font-bold">Investor Relations &amp; Financial Management</h3>
-                    </div>
-                    <div class="p-8 rounded-xl shadow-lg bg-[#1A1A2E] text-center text-gray-200">
-                        <div class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
-                        <h3 class="text-xl font-bold">Operations &amp; Founder Productivity</h3>
-                    </div>
-                    <div class="p-8 rounded-xl shadow-lg bg-[#1A1A2E] text-center text-gray-200">
-                        <div class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-2xl font-bold mx-auto mb-4">4</div>
-                        <h3 class="text-xl font-bold">Founder Well-being &amp; Support</h3>
-                    </div>
-                </div>
-                <div id="priority-form-container" class="mt-16 max-w-lg mx-auto p-8 rounded-2xl glassmorphism-card">
-                    <h3 class="text-2xl font-bold mb-6 text-center">What's your priority?</h3>
-                    <p class="text-gray-400 text-center mb-6">Select the areas where you need to get things right first:</p>
-                    <form id="priority-form" class="space-y-4">
-                        <div>
-                            <label class="flex items-center space-x-3">
-                                <input type="checkbox" name="priority" value="go-to-market" class="h-5 w-5 text-cyan-500 bg-gray-900 rounded border-gray-600 focus:ring-cyan-500">
-                                <span class="text-gray-200">Go-to-Market & Customer Growth</span>
-                            </label>
-                        </div>
-                        <div>
-                            <label class="flex items-center space-x-3">
-                                <input type="checkbox" name="priority" value="investor-relations" class="h-5 w-5 text-cyan-500 bg-gray-900 rounded border-gray-600 focus:ring-cyan-500">
-                                <span class="text-gray-200">Investor Relations & Financial Management</span>
-                            </label>
-                        </div>
-                        <div>
-                            <label class="flex items-center space-x-3">
-                                <input type="checkbox" name="priority" value="operations" class="h-5 w-5 text-cyan-500 bg-gray-900 rounded border-gray-600 focus:ring-cyan-500">
-                                <span class="text-gray-200">Operations & Founder Productivity</span>
-                            </label>
-                        </div>
-                        <div>
-                            <label class="flex items-center space-x-3">
-                                <input type="checkbox" name="priority" value="founder-well-being" class="h-5 w-5 text-cyan-500 bg-gray-900 rounded border-gray-600 focus:ring-cyan-500">
-                                <span class="text-gray-200">Founder Well-being & Support</span>
-                            </label>
-                        </div>
-                        <button type="submit" class="w-full btn btn-primary mt-6">Submit</button>
-                    </form>
-                    <div id="priority-success" class="hidden text-center mt-4 bg-green-900 border border-green-700 text-green-300 px-4 py-3 rounded-lg" role="alert">
-                        Thanks for your feedback!
-                    </div>
+                    <a href="#assessment" class="btn btn-secondary w-full sm:w-auto">How it works</a>
                 </div>
             </div>
             <div class="absolute bottom-8 left-1/2 -translate-x-1/2">
                 <a href="#assessment" class="down-arrow">&#8595;</a>
             </div>
         </section>
-        
+
         <section id="assessment" class="py-20 bg-[#0D0D19] relative">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl mx-auto text-center">
                     <h2 class="section-title text-white">Start with a free AI assessment of your project or idea</h2>
                     <p class="mt-4 text-lg text-gray-400">
-                        AI personas will debate your idea, refining offers to find the right path to pivots or repositioning (if necessary) before sending you a concise evaluation:<br>risks, opportunities, and next steps — delivered straight to your inbox.
+                        AI personas will debate your idea, refining offers to find the right path to pivots or repositioning (if necessary) to highlight: <span class="text-white font-semibold">risks, opportunities, and next steps.</span>
                     </p>
                 </div>
 
@@ -469,14 +402,7 @@
                 }
             });
 
-            const priorityForm = document.getElementById('priority-form');
-            const prioritySuccess = document.getElementById('priority-success');
-            const priorityLabels = {
-                'go-to-market': 'Go-to-Market & Customer Growth',
-                'investor-relations': 'Investor Relations & Financial Management',
-                'operations': 'Operations & Founder Productivity',
-                'founder-well-being': 'Founder Well-being & Support'
-            };
+            // Priority form logic REMOVED as the section was deleted.
 
             const contactForm = document.getElementById('contact-form-submit');
             const contactFormContainer = document.getElementById('contact-form-container');
@@ -487,10 +413,6 @@
                 if (contactForm.checkValidity()) {
                     const formData = new FormData(contactForm);
                     formData.append('form-type', 'contact');
-                    const priorityData = Array.from(priorityForm.elements['priority'])
-                        .filter(checkbox => checkbox.checked)
-                        .map(checkbox => priorityLabels[checkbox.value]);
-                    formData.append('priority', priorityData.join(', '));
                     
                     const formURL = 'https://formspree.io/f/xanpyelr'; // REPLACE WITH YOUR FORMSPREE ID
                     try {
@@ -517,6 +439,14 @@
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
+                    if (mobileMenu.classList.contains('hidden') === false) {
+                        // Close menu when navigating on mobile
+                        document.querySelectorAll('#mobile-menu a').forEach(link => {
+                            link.addEventListener('click', () => {
+                                mobileMenu.classList.add('hidden');
+                            });
+                        });
+                    }
             });
             
             const header = document.getElementById('header');
@@ -534,9 +464,6 @@
                     document.querySelector(this.getAttribute('href')).scrollIntoView({
                         behavior: 'smooth'
                     });
-                    if (mobileMenu.classList.contains('hidden') === false) {
-                        mobileMenu.classList.add('hidden');
-                    }
                 });
             });
         });

@@ -9,31 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Futuristic Tech (Very Dark Grey, Light Grey, Electric Blue) -->
-    <!-- Application Structure Plan: A single-page landing application with a linear flow: Hero (Value Prop) -> Four Wheels (Holistic Approach) -> Founder Priorities (Data Collection) -> Free Assessment (Conversion CTA) -> Our Process (Credibility) -> Contact Form (Direct Communication). This structure guides the founder from a high-level promise to a specific, low-risk action, and then provides a direct channel for communication, maximizing conversion potential. -->
-    <!-- Visualization & Content Choices: Hero: Goal=Inform, Method=Large Typography, Interaction=CTA buttons. Four Wheels: Goal=Organize, Method=Icon+Text cards in a responsive grid (HTML/Tailwind). Founder Priorities: Goal=Collect Data, Method=Interactive Form with checkboxes (HTML/JS). Assessment Form: Goal=Convert, Method=Interactive Form, Interaction=Live word count (JS), button states. Our Process: Goal=Build Trust, Method=Text blocks and lists to explain methodology. Contact Form: Goal=Direct Communication, Method=Standard form inputs (HTML/JS). This avoids complex visualizations, focusing on clarity and UX to build trust. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0F0F1A;
-            color: #F8F9FA;
-        }
-        .accent-color { color: #00FFFF; }
-        .bg-accent { background-color: #00FFFF; }
-        .border-accent { border-color: #00FFFF; }
-        .ring-accent:focus { ring: 2px solid #00FFFF; }
-        .btn {
-            displ<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sololab.ai | Results-as-a-Service for Founders</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Futuristic Tech (Very Dark Grey, Light Grey, Electric Blue) -->
     <!-- Application Structure Plan: A single-page landing application with a linear flow: Hero (Value Prop) -> Free Assessment (Conversion CTA) -> Our Process (Credibility) -> Contact Form (Direct Communication). This simplified structure guides the founder immediately to the high-value action (AI assessment) and then provides supporting trust signals (Our Process) and a final contact channel, maximizing conversion potential by reducing friction. -->
     <!-- Visualization & Content Choices: Hero: Goal=Inform, Method=Large Typography, Interaction=CTA buttons. Assessment Form: Goal=Convert, Method=Interactive Form, Interaction=Live word count (JS), button states. Our Process: Goal=Build Trust, Method=Text blocks and lists to explain methodology. Contact Form: Goal=Direct Communication, Method=Standard form inputs (HTML/JS). This avoids complex visualizations, focusing on clarity and UX to build trust. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
@@ -176,9 +151,6 @@
                 <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-white mb-2">
                     Accelerate early-stage startups to <span class="accent-color">AI-native business.</span>
                 </h1>
-                <p class="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight text-gray-300">
-                    
-                </p>
                 <p class="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-gray-400">
                     We deliver outcomes, not tools.<br>With AI solutions, we do the work and sell you the result.
                 </p>
@@ -381,7 +353,7 @@
                 if (assessmentForm.checkValidity()) {
                     const formData = new FormData(assessmentForm);
                     formData.append('form-type', 'assessment');
-                    const formURL = 'https://formspree.io/f/xanpyelr'; // REPLACE WITH YOUR FORMSPREE ID
+                    const formURL = 'https://formspree.io/f/xanpyelr'; 
                     try {
                         const response = await fetch(formURL, {
                             method: 'POST',
@@ -402,8 +374,6 @@
                 }
             });
 
-            // Priority form logic REMOVED as the section was deleted.
-
             const contactForm = document.getElementById('contact-form-submit');
             const contactFormContainer = document.getElementById('contact-form-container');
             const contactSuccessMessage = document.getElementById('contact-success-message');
@@ -414,7 +384,7 @@
                     const formData = new FormData(contactForm);
                     formData.append('form-type', 'contact');
                     
-                    const formURL = 'https://formspree.io/f/xanpyelr'; // REPLACE WITH YOUR FORMSPREE ID
+                    const formURL = 'https://formspree.io/f/xanpyelr'; 
                     try {
                         const response = await fetch(formURL, {
                             method: 'POST',
